@@ -42,4 +42,21 @@ public class logMiddleware
         Log.Information($"a execução demorou {sw.Elapsed.TotalMilliseconds}ms({sw.Elapsed.TotalSeconds}segundos)");
         
     }
+
 }
+
+public static class SerilogExtension
+{
+    public static void UseSerilog(this WebApplicationBuilder builder)
+    {
+       builder.Services.AddSerilog();
+    }
+}
+
+public static class logMiddlewareExtensions
+    {
+        public static void UseLogTempo(this WebApplication app)
+        {
+            app.UseMiddleware<logMiddleware>();
+        }
+    }

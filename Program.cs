@@ -5,9 +5,13 @@ using ASPaPP;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.UseSerilog();
+
 var app = builder.Build();
 
-app.UseMiddleware<logMiddleware>();
+
+
+app.UseLogTempo();
 
 app.MapGet("/", () => "TESTE");
 
